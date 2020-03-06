@@ -1,0 +1,31 @@
+{
+  "name": "docker-route53-dynip",
+  "version": "1.0.0",
+  "description": "Updates A records in AWS Route53 based on your Internet IP address",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danwiltshire/docker-route53-dynip.git"
+  },
+  "keywords": [
+    "Route53",
+    "AWS",
+    "DynIP"
+  ],
+  "author": "Daniel Wiltshire",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/danwiltshire/docker-route53-dynip/issues"
+  },
+  "homepage": "https://github.com/danwiltshire/docker-route53-dynip#readme",
+  "dependencies": {
+    "aws-sdk": "^2.633.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.7"
+  }
+}
