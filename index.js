@@ -1,20 +1,23 @@
 var AWS = require('aws-sdk');
 var _ = require('lodash');
+require('dotenv').config()
 
 var creds = new AWS.Credentials({
-    accessKeyId: '', secretAccessKey: ''
+    accessKeyId: process.env.AWS_AUTH_ACCESSKEYID, secretAccessKey: process.env.AWS_AUTH_SECRETACCESSKEY
   });
 
 
 var route53 = new AWS.Route53(options = {credentials: creds});
 
 var params = {
-    HostedZoneId: '', /* required */
-    RecordName: '', /* required */
+    HostedZoneId: process.env.AWS_ROUTE53_HOSTEDZONEID, /* required */
+    RecordName: process.env.AWS_ROUTE53_RECORDNAME, /* required */
     RecordType: 'A', /* required */
   };
 
 var targetRecord = [ '192.0.2.47', '192.0.2.59' ]
+
+console.log();
 
 function getInternetIP() {
     // from Node.JS docs
@@ -68,7 +71,7 @@ function update() {
         {
        Action: "UPSERT", 
        ResourceRecordSet: {
-        Name: "", 
+        Name: process.env.AWS_ROUTE53_RECORDNAME, 
         ResourceRecords: [
            {
           Value: targetRecord[0]
@@ -77,14 +80,14 @@ function update() {
              Value: '192.0.2.58'
          }
         ],
-        TTL: 300, 
+        TTL: process.env.AWS_ROUTE53_TTL, 
         Type: "A"
        }
       }
      ], 
      Comment: "Updated via docker-route53-dynip"
     }, 
-    HostedZoneId: "ZT523OMGT0ZJ7"
+    HostedZoneId: process.env.AWS_ROUTE53_HOSTEDZONEID
    };
    route53.changeResourceRecordSets(params, function(err, data) {
      if (err) console.log(err, err.stack); // an error occurred
