@@ -47,12 +47,6 @@ var creds = new AWS.Credentials({
 var route53 = new AWS.Route53(options = {credentials: creds});
 
 var params = {
-  HostedZoneId: process.env.AWS_ROUTE53_HOSTEDZONEID,
-  RecordName: process.env.AWS_ROUTE53_RECORDNAME,
-  RecordType: 'A',
-};
-
-var params = {
   ChangeBatch: {
   Changes: [
     {
