@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-var aws = require('aws-sdk');
+const aws = require('aws-sdk');
 const https = require('https');
 
 var creds = new aws.Credentials({
