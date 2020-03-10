@@ -14,11 +14,9 @@ function getIP(callback) {
 
     // called when the complete response is received.
     res.on('end', () => {
-        console.log("getIP complete response...");
         return callback(null, JSON.parse(data));
     });
   }).on("error", (err) => {
-      console.log("getIP hit error...");
       return callback(err, null);
   });
 }
