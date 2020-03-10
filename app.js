@@ -10,14 +10,13 @@ let creds = new aws.Credentials({
 const route53 = new aws.Route53(options = {credentials: creds});
 
 function getIP(callback) {
+
   https.get('https://api.ipify.org?format=json', (res) => {
     let data = '';
-
     // called when a data chunk is received.
     res.on('data', (chunk) => {
         data += chunk;
     });
-
     // called when the complete response is received.
     res.on('end', () => {
         return callback(null, JSON.parse(data));
@@ -25,9 +24,11 @@ function getIP(callback) {
   }).on("error", (err) => {
       return callback(err, null);
   });
+
 }
 
 function setIP() {
+
   getIP(function(err, data) {
     if(!err) {
         var params = {
@@ -62,6 +63,7 @@ function setIP() {
         console.log(err);
       }
   });
+
 }
 
 setIP();
