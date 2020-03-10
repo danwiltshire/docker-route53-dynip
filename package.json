@@ -2,7 +2,7 @@
   "name": "docker-route53-dynip",
   "version": "1.0.0",
   "description": "Updates A records in AWS Route53 based on your Internet IP address",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
