@@ -8,7 +8,7 @@ var creds = new aws.Credentials({
   secretAccessKey:  process.env.AWS_AUTH_SECRETACCESSKEY
 });
 
-var route53 = new aws.Route53(options = {credentials: creds});
+const route53 = new aws.Route53(options = {credentials: creds});
 
 function getIP(callback) {
   https.get('https://api.ipify.org?format=json', (res) => {
