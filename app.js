@@ -31,7 +31,7 @@ function setIP() {
 
   getIP(function(err, data) {
     if(!err) {
-        var params = {
+        let params = {
           ChangeBatch: {
           Changes: [
             {
