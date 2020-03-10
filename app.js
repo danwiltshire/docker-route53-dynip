@@ -1,14 +1,14 @@
 require('dotenv').config()
 
-var AWS = require('aws-sdk');
+var aws = require('aws-sdk');
 const https = require('https');
 
-var creds = new AWS.Credentials({
+var creds = new aws.Credentials({
   accessKeyId:      process.env.AWS_AUTH_ACCESSKEYID,
   secretAccessKey:  process.env.AWS_AUTH_SECRETACCESSKEY
 });
 
-var route53 = new AWS.Route53(options = {credentials: creds});
+var route53 = new aws.Route53(options = {credentials: creds});
 
 function getIP(callback) {
   https.get('https://api.ipify.org?format=json', (res) => {
